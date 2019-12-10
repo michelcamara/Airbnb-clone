@@ -1,0 +1,13 @@
+Etapa 1:
+  Aprendizado dos conceitos: ORM, models, controllers, migrations, JWT.
+
+Etapa 2:
+  Listagem de imóveis;
+  Exibição de um único imóvel com imagens;
+  Remoção de imóveis;
+  Relacionamento entre usuários e imóveis (um para muitos);
+  Relacionamento entre imóveis e imagens (um para muitas);
+
+Etapa 3:
+  Criação/edição de imóveis com upload;
+  Busca por distância através de GPS;
