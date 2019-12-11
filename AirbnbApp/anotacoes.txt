@@ -1,0 +1,33 @@
+React-Native versao 0.56.0;
+
+Etapa 1:
+  - Instalacao de dependencias:[ yarn add axios prop-types react-navigation styled-components ]
+    * Axios: Cliente HTTP usado para enviar requisições à API;
+    * Prop Types: Lib para checagem de tipo das props de componentes React;
+    * React Navigation:Lib implementação de navegação na aplicação;
+    * Styled Components: Lib usada estilização dos componentes.
+
+  -Estruturacao de arquivos:
+    --src
+    ----images
+    ------airbnb_logo.png
+    ----pages
+    ------main
+    --------index.js
+    --------styles.js
+    ------signIn
+    --------index.js
+    --------styles.js
+    ------signUp
+    --------index.js
+    --------styles.js
+    ----services
+    ------api.js
+    ----index.js
+    ----routes.js
+
+  signIn -> Index.js -> Try:
+    1. Atribuir à uma constante o retorno do envio de uma requisição POST para a rota /sessions da API com o email e senha no corpo da requisição;
+    2. Caso a requisição de autenticação tenha sido bem sucedida iremos guardar no Async Storage, que é uma API para armazenamento de dados offline do React Native, o token JWT retornado, pois usaremos ele em todas as requisições a partir de agora;
+    3. Criar uma constante contendo as instruções para fazer o reset da Stack de navegação, isso para que quando a aplicação for redirecionada para a tela principal não tenha um botão de voltar para o Login;
+    4. E por último iremos usar um dispatch nessa constante contendo as instruções de reset.
