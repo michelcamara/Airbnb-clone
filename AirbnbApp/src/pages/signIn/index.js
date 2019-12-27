@@ -18,10 +18,12 @@ import {
 } from './styles';
 
 export default class SignIn extends Component {
+  //Ocultar o Header que vem por padrão nas telas da Stack do React Navigation
   static navigationOptions = {
     header: null,
   };
-
+  //validação das props
+  //é necessário a passagem de um objeto navigation que contenha as funções navigate e dispatch.
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
@@ -35,22 +37,28 @@ export default class SignIn extends Component {
     error: '',
   };
 
+  //ela apenas irá recuperar um parâmetro e guardá-lo na variável email do state
   handleEmailChange = (email) => {
     this.setState({ email });
   };
-
+  //é igual à primeira
   handlePasswordChange = (password) => {
     this.setState({ password });
   };
-
+  //irá navegar para a tela de cadastro, ela irá usar o método navigate que está
+  //disponível nas props do componente graças ao React Navigation
   handleCreateAccountPress = () => {
     this.props.navigation.navigate('SignUp');
   };
-
+  //a responsável pela comunicação com a API e dar um resultado de sucesso ou erro para o Login
   handleSignInPress = async () => {
+    //uma verificação para que o usuário não consiga enviar uma requisição para a API sem preencher os 2 campos, 
+    //caso algum deles não esteja preenchido é setado uma mensagem de erro.
     if (this.state.email.length === 0 || this.state.password.length === 0) {
       this.setState({ error: 'Preencha usuário e senha para continuar!' }, () => false);
-    } else {
+    }//Caso os campos tenham sido preenchidos irá entrar no bloco do else 
+    else {
+      //ler as etapas do TRY no documento Anotacoes.txt
       try {
         const response = await api.post('/sessions', {
           email: this.state.email,
@@ -64,7 +72,8 @@ export default class SignIn extends Component {
           ],
         });
         this.props.navigation.dispatch(resetAction);
-      } catch (_err) {
+      } //o que é feito caso haja um erro é setar uma mensagem de erro no state também
+      catch (_err) {
         this.setState({ error: 'Houve um problema com o login, verifique suas credenciais!' });
       }
     }
