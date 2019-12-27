@@ -48,7 +48,6 @@ export default class Main extends Component {
     header: null,
   };
 
-  //preparado para toda a parte de cadastro de um novo imóvel
   state = {
     locations: [],
     newRealty: false,
@@ -87,7 +86,6 @@ export default class Main extends Component {
     }
   }
 
-  //muda o valor da variável newRealty de true para false e vice-versa
   handleNewRealtyPress = () => this.setState({ newRealty: !this.state.newRealty })
 
   handleCameraModalClose = () => this.setState({ cameraModalOpened: !this.state.cameraModalOpened })
@@ -101,8 +99,7 @@ export default class Main extends Component {
     detailsModalOpened: !this.state.detailsModalOpened,
     realtyDetailed: index,
   })
-  //utiliza um método disponibilizado pelo Mapbox que permite obter o ponto central do mapa, em seguida usamos esse ponto 
-  //para adicionar as coordenadas selecionadas no objeto locationdentro do objeto realtyData
+
   handleGetPositionPress = async () => {
     try {
       const [longitude, latitude] = await this.map.getCenter();
